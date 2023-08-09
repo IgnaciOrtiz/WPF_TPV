@@ -29,10 +29,5 @@ namespace WPF_TPV.View
         {
             Application.Current.Shutdown();
         }
-
-        private void buttonLogin_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

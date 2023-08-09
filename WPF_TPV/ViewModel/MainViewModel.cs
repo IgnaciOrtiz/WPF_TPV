@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using WPF_TPV.Model;
+﻿using WPF_TPV.Model;
 using WPF_TPV.Repositories;
 
 namespace WPF_TPV.ViewModel
@@ -26,27 +25,27 @@ namespace WPF_TPV.ViewModel
         {
             userRepository = new UserRepository();
             CurrentUserAccount = new UserAccountModel();
-            LoadCurrentUserData();
+            //LoadCurrentUserData();
         }
 
-        public void LoadCurrentUserData()
-        {
-            var user = userRepository.GetByUsername(Thread.CurrentPrincipal.Identity.Name);
-            if (user != null)
-            {
+        //public void LoadCurrentUserData()
+        //{
+        //    var user = userRepository.GetByUsername(Thread.CurrentPrincipal.Identity.Name);
+        //    if (user != null)
+        //    {
 
 
-                CurrentUserAccount.UserName = user.UserName;
-                CurrentUserAccount.DisplayName = $"Bienvenido {user.UserName}. Su id de empleado es: {user.idEmpleado}";
-                CurrentUserAccount.ProfilePicture = null;
+        //        CurrentUserAccount.UserName = user.UserName;
+        //        CurrentUserAccount.DisplayName = $"Bienvenido {user.UserName}. Su id de empleado es: {user.idEmpleado}";
+        //        CurrentUserAccount.ProfilePicture = null;
 
-            }
-            else
-            {
-                CurrentUserAccount.DisplayName = "Usuario o password incorrectos";
+        //    }
+        //    else
+        //    {
+        //        CurrentUserAccount.DisplayName = "Usuario o password incorrectos";
 
-            }
-        }
+        //    }
+        //}
 
     }
 }
