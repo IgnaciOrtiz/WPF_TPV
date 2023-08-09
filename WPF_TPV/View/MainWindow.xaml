@@ -71,13 +71,14 @@
                             HorizontalAlignment="Right" 
                             VerticalAlignment="Center">
 
-                    <Button Content="Botón 1"
+                    <Button Content="TPV"
                             Margin="5"
                             BorderThickness="0"
                             Cursor="Hand"
                             FontFamily="Microsoft YaHei UI"
                             FontSize="11"
-                            Foreground="White">
+                            Foreground="White"
+                            Click="buttonOpenCaja_Click">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#37A5DF" />
@@ -101,13 +102,14 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button Content="Botón 2"
+                    <Button Content="CLIENTES"
                             Margin="5"
                             BorderThickness="0"
                             Cursor="Hand"
                             FontFamily="Microsoft YaHei UI"
                             FontSize="11"
-                            Foreground="White">
+                            Foreground="White"
+                            Click="buttonOpenClientes_Click">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#37A5DF" />
@@ -138,13 +140,14 @@
                             HorizontalAlignment="Left" 
                             VerticalAlignment="Center">
 
-                    <Button Content="Botón 3"
+                    <Button Content="AJUSTES"
                             Margin="5"
                             BorderThickness="0"
                             Cursor="Hand"
                             FontFamily="Microsoft YaHei UI"
                             FontSize="11"
-                            Foreground="White">
+                            Foreground="White"
+                            Click="buttonOpenAjustes_Click">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#37A5DF" />
@@ -168,19 +171,20 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Button Content="Botón 4"
-                             Margin="5"
+                    <Button Content="SALIR"
+                            Margin="5"
                             BorderThickness="0"
                             Cursor="Hand"
                             FontFamily="Microsoft YaHei UI"
                             FontSize="11"
-                            Foreground="White">
+                            Foreground="White"
+                            Click="buttonSalir_Click">
                         <Button.Style>
                             <Style TargetType="Button">
-                                <Setter Property="Background" Value="#37A5DF" />
+                                <Setter Property="Background" Value="#FF6464" />
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="true">
-                                        <Setter Property="Background" Value="#1F87BE" />
+                                        <Setter Property="Background" Value="#FF2222" />
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>

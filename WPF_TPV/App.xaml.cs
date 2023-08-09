@@ -3,9 +3,7 @@ using WPF_TPV.View;
 
 namespace WPF_TPV
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
+
     public partial class App : Application
     {
         protected void ApplicationStart(object sender, StartupEventArgs e)
