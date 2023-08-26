@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WPF_TPV.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="clr-namespace:WPF_TPV.ViewModel"
     Width="800"
     Height="550"
     mc:Ignorable="d"
@@ -16,6 +17,20 @@
     WindowStartupLocation="CenterScreen"
     WindowStyle="None">
 
+    <Window.DataContext>
+        <viewModel:FamiliaProdViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+    </Window.Resources>
+
+    <Window.Visibility>
+        <Binding
+            Converter="{StaticResource BooleanToVisibility }"
+            Mode="TwoWay"
+            Path="IsViewVisible" />
+    </Window.Visibility>
 
     <Border CornerRadius="50">
         <Border.Background>
@@ -30,31 +45,129 @@
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Offset="0" Color="#A9D8F1" />
                     <GradientStop Offset="1" Color="#6BBBE7" />
-
                 </LinearGradientBrush>
             </Border.Background>
 
-
-
             <Grid>
-                <TextBox
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Background="Transparent"
-                    Foreground="White"
-                    Text="WINDOW CAJA TEST" />
-                <StackPanel Height="40"
-                            Width="175" 
-                            Margin="310,302,310,204">
-                    <Button Content="Volver"
-                            BorderThickness="0"
-                            Cursor="Hand"
-                            FontFamily="Microsoft YaHei UI"
-                            FontSize="11"
-                            Foreground="White"
-                            Click="buttonVolver_Click">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0" />
+                        <ColumnDefinition Width="51" />
+                        <ColumnDefinition Width="50" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        Height="16"
+                        Margin="40,0,0,0"
+                        VerticalAlignment="Center"
+                        FontFamily="Microsoft YaHei UI"
+                        FontSize="12"
+                        Foreground="Black"
+                        Text="CAJA" />
+
+                    <TextBlock
+                        x:Name="horaTextBlock"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        Width="80"
+                        Height="16"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        FontSize="12"
+                        RenderTransformOrigin="0.5,0.5" />
+
+                    <Button
+                        x:Name="buttonVolver"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Margin="0,0,25,0"
+                        Click="buttonVolver_Click"
+                        Content="←"
+                        Cursor="Hand"
+                        FontFamily="Microsoft YaHei UI"
+                        FontSize="11"
+                        Foreground="White">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#37A5DF" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Background" Value="#1F87BE" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border
+                                    Width="20"
+                                    Height="20"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button
+                        x:Name="buttonMinimize"
+                        Grid.Column="2"
+                        Margin="25,0,0,0"
+                        BorderThickness="0"
+                        Click="buttonMinimize_Click"
+                        Content="-"
+                        Cursor="Hand"
+                        FontFamily="Microsoft YaHei UI"
+                        FontSize="11"
+                        Foreground="White">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#37A5DF" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Background" Value="#1F87BE" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    Width="20"
+                                    Height="20"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button
+                        x:Name="buttonClose"
+                        Grid.Column="3"
+                        Grid.ColumnSpan="1"
+                        Margin="0,0,25,0"
+                        BorderThickness="0"
+                        Click="buttonClose_Click"
+                        Content="X"
+                        Cursor="Hand"
+                        FontFamily="Microsoft YaHei UI"
+                        FontSize="11"
+                        Foreground="White">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
                                 <Setter Property="Background" Value="#FF6464" />
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="true">
@@ -65,20 +178,39 @@
                         </Button.Style>
 
                         <Button.Template>
-                            <ControlTemplate TargetType="{x:Type Button}">
+                            <ControlTemplate TargetType="Button">
                                 <Border
-                                    Width="150"
-                                    Height="40"
+                                    Width="20"
+                                    Height="20"
                                     Background="{TemplateBinding Background}"
-                                    CornerRadius="20">
+                                    CornerRadius="10">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                </StackPanel>
-            </Grid>
+                </Grid>
 
+                <WrapPanel
+                    Width="290"
+                    Height="96"
+                    Margin="26,87,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    IsEnabled="True"
+                    Name="wrapPanelFamilias"
+                    Visibility="Visible" 
+                    Grid.Row="1" />
+                <WrapPanel
+                    Width="290"
+                    Height="282"
+                    Margin="27,198,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Name="wrapPanelProductos"
+                    Visibility="Visible" 
+                    Grid.Row="1" />
+            </Grid>
         </Border>
     </Border>
 </Window>

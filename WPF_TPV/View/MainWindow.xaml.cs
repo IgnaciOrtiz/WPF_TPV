@@ -48,7 +48,9 @@ namespace WPF_TPV.View
             }
             else
             {
+
                 var loginWindow = new LoginWindow();
+                this.Close();
                 loginWindow.Show();
                 loginWindow.IsVisibleChanged += (s, ev) =>
                 {
