@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using WPF_LoginForm.Repositories;
 using WPF_TPV.Model;
@@ -36,6 +37,27 @@ namespace WPF_TPV.Repositories
             }
 
             return productos;
+        }
+
+        public decimal GetPrecioProducto(int idProducto)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand("SELECT Precio FROM [mnt_Productos] WHERE idProducto = @idProducto", connection))
+                {
+                    command.Parameters.AddWithValue("@idProducto", idProducto);
+
+                    var result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        return Convert.ToDecimal(result);
+                    }
+
+                    return 0;
+                }
+            }
         }
     }
 }

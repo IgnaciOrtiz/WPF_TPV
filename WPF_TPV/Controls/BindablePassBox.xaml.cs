@@ -4,9 +4,6 @@ using System.Windows.Controls;
 
 namespace WPF_TPV.Controls
 {
-    /// <summary>
-    /// Lógica de interacción para BindablePassBox.xaml
-    /// </summary>
     public partial class BindablePassBox : UserControl
     {
         public static readonly DependencyProperty PasswordProperty =

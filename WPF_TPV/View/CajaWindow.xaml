@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:WPF_TPV.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:WPF_TPV.ViewModel"
+    xmlns:repositories="clr-namespace:WPF_TPV.Repositories"
     Width="800"
     Height="550"
     mc:Ignorable="d"
@@ -23,6 +24,55 @@
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+
+        <Style x:Key="SeccionButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#37A5DF" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="#1F87BE" />
+            <Setter Property="FontFamily" Value="Microsoft YaHei UI" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Margin" Value="0,5,5,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ProductoButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#37A5DF" />
+            <Setter Property="Foreground" Value="black" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="#1F87BE" />
+            <Setter Property="FontFamily" Value="Microsoft YaHei UI" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Margin" Value="0,5,5,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Window.Resources>
 
     <Window.Visibility>
@@ -192,6 +242,7 @@
                 </Grid>
 
                 <WrapPanel
+                    Grid.Row="1"
                     Width="290"
                     Height="96"
                     Margin="26,87,0,0"
@@ -199,17 +250,55 @@
                     VerticalAlignment="Top"
                     IsEnabled="True"
                     Name="wrapPanelFamilias"
-                    Visibility="Visible" 
-                    Grid.Row="1" />
+                    Visibility="Visible" />
                 <WrapPanel
+                    Grid.Row="1"
                     Width="290"
                     Height="282"
                     Margin="27,198,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Name="wrapPanelProductos"
-                    Visibility="Visible" 
-                    Grid.Row="1" />
+                    Visibility="Visible" />
+
+                <ListBox
+                    Grid.Row="1"
+                    Margin="438,22,50,102"
+                    Background="AliceBlue"
+                    ItemsSource="{Binding ProductosEnTicket}"
+                    Name="listBoxTicket">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="145" />
+                                    <ColumnDefinition Width="145" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Nombre}" />
+                                <TextBlock
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Right"
+                                    Text="{Binding Precio}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <TextBlock
+                    Grid.Row="1"
+                    Margin="438,419,50,57"
+                    Foreground="Black"
+                    Name="totalTextBlock"
+                    Background="AliceBlue"/>
+                <Button
+                    Grid.Row="1"
+                    Width="100"
+                    Height="30"
+                    Margin="0,0,154,13"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Click="CerrarTicket_Click"
+                    Content="Cerrar Ticket"
+                    Style="{StaticResource SeccionButtonStyle}" />
             </Grid>
         </Border>
     </Border>
