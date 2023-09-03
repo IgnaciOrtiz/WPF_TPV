@@ -22,7 +22,7 @@ namespace WPF_TPV.View
         {
             InitializeComponent();
 
-            // Inicializar el temporizador para actualizarse cada minuto
+            // Inicializar el temporizador para actualizarse cada segundo
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
@@ -131,6 +131,12 @@ namespace WPF_TPV.View
         }
         private void CerrarTicket_Click(object sender, RoutedEventArgs e)
         {
+            if (productosEnTicketTemp.Count == 0)
+            {
+                MessageBox.Show("No se pueden cerrar facturas vacías.");
+                return; // Salir del método si no hay líneas en la factura.
+            }
+
             CerrarTicket();
         }
         private void CerrarTicket()

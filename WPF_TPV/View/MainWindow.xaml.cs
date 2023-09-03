@@ -38,6 +38,21 @@ namespace WPF_TPV.View
             this.Close();
         }
 
+        private void buttonOpenProductos_Click(object sender, RoutedEventArgs e)
+        {
+            ProductosWindow productosWindow = new ProductosWindow();
+            productosWindow.Show();
+            this.Close();
+
+        }
+        private void buttonOpenFamilias_Click(object sender, RoutedEventArgs e)
+        {
+            FamiliasWindow familiasproductosWindow = new FamiliasWindow();
+            familiasproductosWindow.Show();
+            this.Close();
+
+        }
+
         private void buttonSalir_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("¿Desea cerrar la aplicación?", "Confirmación de salida", MessageBoxButton.YesNo, MessageBoxImage.Question);

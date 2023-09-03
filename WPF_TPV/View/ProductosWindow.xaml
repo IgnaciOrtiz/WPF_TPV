@@ -1,0 +1,86 @@
+﻿<Window
+    x:Class="WPF_TPV.View.ProductosWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPF_TPV.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="800"
+    Height="550"
+    mc:Ignorable="d"
+    AllowsTransparency="True"
+    Background="Transparent"
+    MouseDown="Window_MouseDown"
+    ResizeMode="NoResize"
+    Title="AjustesWindow"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None">
+
+
+    <Border CornerRadius="50">
+        <Border.Background>
+            <ImageBrush ImageSource="/View/Images/cajero.jpg" />
+        </Border.Background>
+        <Border
+            BorderBrush="#5AB5E4"
+            BorderThickness="2"
+            CornerRadius="50"
+            Opacity="0.76">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Offset="0" Color="#A9D8F1" />
+                    <GradientStop Offset="1" Color="#6BBBE7" />
+
+                </LinearGradientBrush>
+            </Border.Background>
+
+
+
+            <Grid>
+                <TextBox
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    Foreground="White"
+                    Text="WINDOW PRODUCTOS TEST" />
+                <StackPanel
+                    Width="175"
+                    Height="40"
+                    Margin="310,302,310,204">
+                    <Button
+                        BorderThickness="0"
+                        Click="buttonVolver_Click"
+                        Content="Volver"
+                        Cursor="Hand"
+                        FontFamily="Microsoft YaHei UI"
+                        FontSize="11"
+                        Foreground="White">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#FF6464" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Background" Value="#FF2222" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border
+                                    Width="150"
+                                    Height="40"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="20">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+        </Border>
+    </Border>
+</Window>
