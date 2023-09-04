@@ -132,4 +132,3 @@ namespace WPF_TPV.View
         }
     }
 }
-
